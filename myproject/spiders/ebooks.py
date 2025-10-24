@@ -1,9 +1,18 @@
 import scrapy
-from scrapy import Spider
+
 
 class EbookSpider(scrapy.Spider):
     name = "ebook"
-    starts_url = ["https://books.toscrape.com/"]
+    start_urls = ["https://books.toscrape.com/"]
+    
     def parse(self,response):
-        print("SCRAPYYYYYYYYYYYYYYYYY")
-        print(response)
+        print("[Parses]")
+        ebooks = response.css("article")
+        for ebook in ebooks:
+            item = ebook.css("a::text").get()
+            price = ebook.css("p.price_color::text").get()
+           
+            yield {
+                "item": item,
+                "price": price
+            }
