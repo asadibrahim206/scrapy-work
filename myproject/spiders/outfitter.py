@@ -11,8 +11,9 @@ class OutfitterSpider(scrapy.Spider):
         
         for item in items:
             item = item.xpath("//h3[@class='card__heading h5']/a/text()")
-            
+            price = item.xpath("//html")
             print(item)
+            print(price)
             
 
 
