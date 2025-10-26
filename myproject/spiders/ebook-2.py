@@ -1,21 +1,25 @@
 import scrapy
 
-class EbookSpider(scrapy.Spider):
-    name = "ebooks"
+class OutfitterSpider(scrapy.Spider):
+    name = "outfitter"
+    start_urls = ["https://outfitters.com.pk/collections/men-t-shirts"]
 
-    start_urls = ["https://books.toscrape.com/"]
-
-    def parse(self,response):
+    def parse(self, response):
         print("[PARSE]")
-        articles = response.css("article")
-        for article in articles:
-            item = article.css("h3 a::text").get()
-            price = article.css(".price_color::text").get()
-            print(item,price)
-            yield{
-                "item", item,
-                "price", price
+        items = response.xpath("//h3[@class='card__heading h5']/a/text()").getall()
+        price = response.xpath("//span[@class='money']/text()").getall()
+
+        yield {
+                "item": items,
+                "price": price
             }
+
+       
+             
+            
+
+
+          
 
 
 
