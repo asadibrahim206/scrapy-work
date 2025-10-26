@@ -6,13 +6,17 @@ class OutfitterSpider(scrapy.Spider):
 
     def parse(self, response):
         print("[PARSE]")
-        items = response.xpath("//h3[@class='card__heading h5']/a/text()").getall()
-        price = response.xpath("//span[@class='money']/text()").getall()
+        # items = response.xpath("//h3[@class='card__heading h5']/a/text()").getall()
+        # price = response.xpath("//span[@class='money']/text()").getall()
 
-        yield {
-                "item": items,
-                "price": price
-            }
+        shirts = response.xpath("//div[@class='card_information']")
+        print(shirt)
+
+
+        # yield {
+        #         "item": items,
+        #         "price": price
+        #     }
 
        
              
