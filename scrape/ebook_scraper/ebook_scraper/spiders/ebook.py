@@ -5,7 +5,7 @@ class EbookSpider(scrapy.Spider):
     start_urls =["https://books.toscrape.com/"]
 
     def parse(self,response):
-        print("[----------OUR RESPONSE----------]")
+        print("[OUR RESPONSE]")
         ebooks = response.css("article.product_pod")
 
         for ebook in ebooks:
