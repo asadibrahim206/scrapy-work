@@ -13,9 +13,6 @@ class EbookSpider(scrapy.Spider):
             project_item = MyprojectItem()
             items = MyprojectItem()
             items['title'] = ebook.css("a::text").get()
-            price = ebook.css("p.price_color::text").get()
+            items['price'] = ebook.css("p.price_color::text").get()
            
-            yield {
-                "item": item,
-                "price": price
-            }
+            yield items
