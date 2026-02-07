@@ -1,4 +1,5 @@
 import scrapy
+from ..items import 
 
 
 class EbookSpider(scrapy.Spider):
