@@ -1,5 +1,6 @@
 import scrapy
 from ..items import MyprojectItem
+from scrapy.loader import ItemLoader
 
 
 class EbookSpider(scrapy.Spider):
@@ -10,7 +11,7 @@ class EbookSpider(scrapy.Spider):
         
         ebooks = response.css("article")
         for ebook in ebooks:
-            project_item = MyprojectItem()
+            loader = MyprojectItem()
             items = MyprojectItem()
             items['title'] = ebook.css("a::text").get()
             items['price'] = ebook.css("p.price_color::text").get()
