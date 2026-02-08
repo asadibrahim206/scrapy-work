@@ -15,4 +15,4 @@ class EbookSpider(scrapy.Spider):
             loader.add_css("title","h3 a::attr(title)")
             loader.add_css("price","p.price_color::text")
            
-            yield loader.load_item()
+            yield loader.load_item
