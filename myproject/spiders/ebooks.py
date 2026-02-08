@@ -5,7 +5,7 @@ from scrapy.loader import ItemLoader
 
 class EbookSpider(scrapy.Spider):
     name = "ebook"
-    start_urls = ["https://books.toscrape.com/"]
+    start_urls = ["https://books.toscrape.com/catalogue/category/books/travel_2/"]
     
     def parse(self,response):
         
@@ -15,4 +15,4 @@ class EbookSpider(scrapy.Spider):
             loader.add_css("title","h3 a::attr(title)")
             loader.add_css("price","p.price_color::text")
            
-            yield loader
+            yield loader.load_item()
