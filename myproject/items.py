@@ -5,6 +5,7 @@
 import scrapy
 from scrapy import Item,Field
 from itemloaders.processors import MapCompose,TakeFirst
+from scrapy.loader import itemloaders
 
 def get_price(txt):
     return float(txt.replace("€", ""))
