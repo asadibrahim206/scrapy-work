@@ -11,9 +11,8 @@ class EbookSpider(scrapy.Spider):
         
         ebooks = response.css("article")
         for ebook in ebooks:
-            loader = MyprojectItem()
-            items = MyprojectItem()
-            items['title'] = ebook.css("a::text").get()
-            items['price'] = ebook.css("p.price_color::text").get()
+            loader = ItemLoader(item=MyprojectItem(),selector=ebook)
+            loader.add_css("title","h3 a::attr(title)")
+            loader.add_css("price","p.price_color::text")
            
-            yield items
+            yield loader
