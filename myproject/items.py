@@ -8,7 +8,7 @@ from itemloaders.processors import MapCompose,TakeFirst
 from scrapy.loader import ItemLoader
 
 def get_price(txt):
-    return float(txt.replace("€", ""))
+    return float(txt.replace("£", ""))
 
 class MyprojectItem(Item):
     # define the fields for your item here like:
