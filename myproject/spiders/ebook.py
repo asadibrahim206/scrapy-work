@@ -6,5 +6,7 @@ class EbookSpider(scrapy.Spider):
 
     def parse(self, response):
         print("RESPONSE")
-        ebooks= response.css("h3 a::text").extract()
-        print(ebook)
+        ebooks= response.css("article.product-pod").extract()
+
+        print(ebooks)
+      
