@@ -10,5 +10,5 @@ from scrapy.loader import ItemLoader
 
 class UniversityItem(scrapy.Item):
     university_name = Field()
-    subject = Field()
-    source_url = Field()
+    
+    
