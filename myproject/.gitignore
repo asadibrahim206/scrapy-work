@@ -8,3 +8,6 @@ venv/
 
 # Scrapy specific
 *.log
+
+# Ignore the scraped data file
+uni.csv
