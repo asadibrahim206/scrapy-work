@@ -7,13 +7,8 @@ from scrapy import Item,Field
 from itemloaders.processors import MapCompose,TakeFirst
 from scrapy.loader import ItemLoader
 
-def get_price(txt):
-    return float(txt.replace("£", ""))
 
-class MyprojectItem(Item):
-    # define the fields for your item here like:
-    title = Field()
-    price  = Field(
-        input_processor = MapCompose(get_price),
-        output_processor = TakeFirst()
-        )
+class UniversityItem(scrapy.Item):
+    university_name = Field()
+    subject = Field()
+    source_url = Field()
