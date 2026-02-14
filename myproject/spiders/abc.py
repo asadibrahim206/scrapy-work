@@ -1,2 +1,4 @@
+import scrapy
 
-with open(uni.csv)
+class TrackerSpider:
+    name = 'tracker'
