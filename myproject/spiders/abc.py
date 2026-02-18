@@ -6,4 +6,4 @@ class TrackerSpider(Spider):
 
     def parse(self,response):
         print("our parse")
-        print(response.body()
+        print(response)
