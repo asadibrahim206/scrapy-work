@@ -1,26 +1,30 @@
 import scrapy
+from ..items import ProductItem
 
 class OutfitterSpider(scrapy.Spider):
     name = "ebook"
-    start_urls = ["https://books.toscrape.com/"]
+    start_urls = ["https://priceoye.pk/laptops"]
 
     def parse(self, response):
-       
-        article = response.css("article.product_pod")
-        for _ in article:
-           title = article.css("h3 a::attr(title)").getall()
-           price = article.css("div.product_price p.price_color::text").getall()
+        # Correctly selecting the product containers
+        details = response.css(".detail-box")
+        
+        for product in details:
+            item = ProductItem()
+            
+            raw_title = product.css("h4.p-title::text").get()
+            
+            # Use ::text to get the actual price number
+            # Using .re_first helps pull only the digits and commas
+            raw_price = product.css(".price-diff-retail span::text").re_first(r'[0-9,]+')
+
+            item['title'] = raw_title.strip() if raw_title else None
+            item['price'] = raw_price
+
+            yield item
 
         
-        yield{
-            "title":title,
-            "price":price
-        }
-
-        next_btn = response.css("li.next a::attr(href)").get()
-        next_page = f"{self.start_urls[0]}/{next_btn}"
-        print("Next Page :",next_page)
-
+        
         
           
 

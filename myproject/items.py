@@ -8,7 +8,8 @@ from itemloaders.processors import MapCompose,TakeFirst
 from scrapy.loader import ItemLoader
 
 
-class UniversityItem(scrapy.Item):
-    university_name = Field()
+class ProductItem(scrapy.Item):
+    title = Field()
+    price = Field()
     
     
