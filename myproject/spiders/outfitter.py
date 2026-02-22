@@ -5,7 +5,7 @@ class OutfitterSpider(scrapy.Spider):
     start_urls = ["https://books.toscrape.com/"]
 
     def parse(self, response):
-        print("[PARSE]")
+       
         article = response.css("article.product_pod")
         for _ in article:
            title = article.css("h3 a::attr(title)").getall()
@@ -13,7 +13,7 @@ class OutfitterSpider(scrapy.Spider):
 
         
         next_btn = response.css("li.next a::attr(href)")
-            
+        print(next_btn)
 
         yield{
             "title":title,
