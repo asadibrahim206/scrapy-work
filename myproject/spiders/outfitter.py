@@ -6,14 +6,8 @@ class OutfitterSpider(scrapy.Spider):
 
     def parse(self, response):
         print("[PARSE]")
-        items = response.css("//h3[@class='card__heading h5']/a")
-        prices = response.("//span[@class='money']/text()")
+        response.css("article.product_pod")
         
-        for item in items:
-            item = item.xpath("//h3[@class='card__heading h5']/a/text()")
-            price = item.xpath("//html")
-            print(item)
-            print(price)
             
 
 
