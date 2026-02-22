@@ -18,7 +18,7 @@ class OutfitterSpider(scrapy.Spider):
         }
 
         next_btn = response.css("li.next a::attr(href)").get()
-        next_page = f"{self.start_urls}/{next_btn}"
+        next_page = f"{self.start_urls[0]}/{next_btn}"
         print("Next Page :",next_page)
 
         
