@@ -11,14 +11,15 @@ class OutfitterSpider(scrapy.Spider):
            title = article.css("h3 a::attr(title)").getall()
            price = article.css("div.product_price p.price_color::text").getall()
 
+        
+        next_btn = response.css("li.next a::attr(href)")
+            
+
         yield{
             "title":title,
             "price":price
         }
         
-            
-
-
           
 
 
