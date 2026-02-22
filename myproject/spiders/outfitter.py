@@ -6,7 +6,15 @@ class OutfitterSpider(scrapy.Spider):
 
     def parse(self, response):
         print("[PARSE]")
-        response.css("article.product_pod")
+        article = response.css("article.product_pod")
+        for _ in article:
+           title = article.css("h3 a::attr(title)").getall()
+           price = article.css("div.product_price p.price_color::text").getall()
+
+        yield{
+            "title":title,
+            "price":price
+        }
         
             
 
