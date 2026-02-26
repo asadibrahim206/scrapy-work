@@ -21,7 +21,7 @@ class OutfitterSpider(scrapy.Spider):
             item['title'] = raw_title.strip() if raw_title else None
             item['price'] = raw_price
 
-            yield 
+            yield item
 
         
         
