@@ -22,4 +22,4 @@ class EbookSpider(scrapy.Spider):
                 if name and not name.isdigit():
                     item = UniversityItem()
                     item['university_name'] = name
-                    yield 
+                    yield item
