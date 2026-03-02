@@ -18,7 +18,7 @@ class EbookSpider(scrapy.Spider):
             
             for uni in cells:
                 name = uni.strip()
-                # Filter out numbers or empty strings
+                
                 if name and not name.isdigit():
                     item = UniversityItem()
                     item['university_name'] = name
